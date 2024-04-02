@@ -12,6 +12,7 @@ const App = () => {
 
 
   const handleSubmit = async () => {
+    console.log(process.env.REACT_APP_API_KEY)
     try {
       let err = {};
       if (!image) {
