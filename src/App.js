@@ -29,8 +29,9 @@ const App = () => {
       const response = await fetch('https://clipdrop-api.co/sketch-to-image/v1/sketch-to-image', {
         method: 'POST',
         headers: {
-          'x-api-key': 'f3f09734cf22d58da4dc3e932d49c35ce8032ecfd3db4ab6aee195334d00729841245c96766a5538100b7d30243d1cec',
+          'x-api-key': process.env.CLIP_API_KEY,
         },
+
         body: form,
       });
 
