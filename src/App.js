@@ -6,7 +6,7 @@ const App = () => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState({});
   const [generatedImage, setGeneratedImage] = useState(null);
-
+  console.log(process.env.CLIP_API_KEY)
   const handleSubmit = async () => {
     try {
       let err = {};
