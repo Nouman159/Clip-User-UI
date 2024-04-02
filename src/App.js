@@ -1,5 +1,6 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import axios from 'axios';
+import { BASE_URL } from './config';
 const App = () => {
   const [image, setImage] = useState(null);
   const [prompt, setPrompt] = useState('');
@@ -36,13 +37,12 @@ const App = () => {
         headers: {
           'x-api-key': apiKey,
         },
-
         body: form,
       });
 
       if (response.status === 200) {
         const buffer = await response.arrayBuffer();
-        const blob = new Blob([buffer], { type: 'image/jpeg' }); // Adjust the type as per your API response
+        const blob = new Blob([buffer], { type: 'image/jpeg' });
         const imageUrl = URL.createObjectURL(blob);
 
         const imageUrlBlob = await fetch(imageUrl).then((res) => res.blob());
@@ -52,7 +52,7 @@ const App = () => {
         formData.append('images', image);
         formData.append('images', imageUrlFile);
 
-        await axios.post('https://1185e918-a617-4a69-9cb8-4e937b7f413e-00-2qsxh0102xo1g.worf.replit.dev/upload', formData, {
+        await axios.post(`${BASE_URL}/upload`, formData, {
           headers: {
             'Content-Type': 'multipart/form-data',
           },
@@ -103,7 +103,7 @@ const App = () => {
         </div>
       </div>
       <div className="flex flex-col items-center justify-center mb-">
-        <input type="file" accept="image/*" onChange={handleImageChange} className="border-2 border-gray-400 py-2 px-4 mb-4 md:mb-0 md:mr-4 w-full md:w-auto" />
+        <input type="file" accept=".png, .jpeg, .jpg" onChange={handleImageChange} className="border-2 border-gray-400 py-2 px-4 mb-4 md:mb-0 md:mr-4 w-full md:w-auto" />
         {image ? (
           <div className="flex flex-col mt-4 items-center">
             <img src={URL.createObjectURL(image)} alt="Uploaded Image" className="w-full md:w-96 rounded-md mb-4" />
