@@ -6,7 +6,11 @@ const App = () => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState({});
   const [generatedImage, setGeneratedImage] = useState(null);
-  console.log(process.env.CLIP_API_KEY)
+
+  const apiKey = process.env.REACT_APP_API_KEY
+  console.log(apiKey)
+
+
   const handleSubmit = async () => {
     try {
       let err = {};
@@ -29,7 +33,7 @@ const App = () => {
       const response = await fetch('https://clipdrop-api.co/sketch-to-image/v1/sketch-to-image', {
         method: 'POST',
         headers: {
-          'x-api-key': process.env.CLIP_API_KEY,
+          'x-api-key': apiKey,
         },
 
         body: form,
@@ -90,10 +94,10 @@ const App = () => {
 
   return (
     <div className="min-h-full p-2 md:p-4 lg:p-6">
-      <div class="">
-        <div class="flex justify-start max-w-7xl">
-          <div class="mx-auto grid max-w-lg grid-cols-4 items-center gap-x-8 gap-y-10 sm:max-w-xl sm:grid-cols-6 sm:gap-x-10 lg:mx-0 lg:max-w-none lg:grid-cols-5">
-            <img class="col-span-2 max-h-24 w-full object-contain lg:col-span-1" src="/assets/ClipLogo.png" alt="Transistor" width="188" height="72" />
+      <div>
+        <div className="flex justify-start max-w-7xl">
+          <div className="mx-auto grid max-w-lg grid-cols-4 items-center gap-x-8 gap-y-10 sm:max-w-xl sm:grid-cols-6 sm:gap-x-10 lg:mx-0 lg:max-w-none lg:grid-cols-5">
+            <img className="col-span-2 max-h-24 w-full object-contain lg:col-span-1" src="/assets/ClipLogo.png" alt="Transistor" width="188" height="72" />
           </div>
         </div>
       </div>
