@@ -33,7 +33,7 @@ const App = () => {
       const response = await fetch('https://clipdrop-api.co/sketch-to-image/v1/sketch-to-image', {
         method: 'POST',
         headers: {
-          'x-api-key': apiKey,
+          'x-api-key': process.env.REACT_APP_API_KEY,
         },
 
         body: form,
