@@ -87,10 +87,6 @@ const App = () => {
     }
   };
 
-  useEffect(() => {
-    console.log('file:', image, 'prompt:', prompt);
-  }, [image, prompt]);
-
   return (
     <div className="min-h-full p-2 md:p-4 lg:p-6">
       <div class="">
